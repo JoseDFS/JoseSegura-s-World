@@ -10,21 +10,45 @@ package Fuerza.Builder;
  * @author Jose Segura <com.segura.jd>
  */
 public class Fuerza {
-    private String tipo = "";
-    private int vida;
-    private int FaseHabilitada;
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    private final String tipo;
+    private final int vida;
+    private final int FaseHabilitada;
+
+    private Fuerza(FuerzaBuilder builder) {
+        this.FaseHabilitada = builder.FaseHabilitada;
+        this.vida = builder.vida;
+        this.tipo = builder.tipo;
     }
 
-    public void setVida(int vida) {
-        this.vida = vida;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setFaseHabilitada(int FaseHabilitada) {
-        this.FaseHabilitada = FaseHabilitada;
+    public int getVida() {
+        return vida;
     }
-    
-    
+
+    public int getFaseHabilitada() {
+        return FaseHabilitada;
+    }
+
+    public static class FuerzaBuilder {
+
+        private final String tipo;
+        private final int vida;
+        private final int FaseHabilitada;
+        
+        public FuerzaBuilder(String tipo, int vida, int FaseHabilitada){
+            
+            this.FaseHabilitada = FaseHabilitada;
+            this.tipo = tipo;
+            this.vida = vida;
+        }
+        
+        public Fuerza build(){
+            return new Fuerza(this);
+        }
+    }
+
 }

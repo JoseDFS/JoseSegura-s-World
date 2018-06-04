@@ -5,27 +5,15 @@
  */
 package Fuerza.Builder;
 
-
-
 /**
  *
  * @author Jose Segura <com.segura.jd>
  */
 public class DirectorFuerza {
-    private FuerzaBuilder fuerzaBuilder;
- 
-    public void setFuerzaBuilder(FuerzaBuilder fuerza) { 
-        fuerzaBuilder = fuerza; 
+
+    public Fuerza getFuerza(String t, int v, int f) {
+        return new
+            Fuerza.FuerzaBuilder(t,v,f).build();
     }
-    
-    public Fuerza getPizza() { 
-        return fuerzaBuilder.getFuerza(); 
-    }
- 
-    public void construirPizza() {
-       fuerzaBuilder.crearNuevaFuerza();
-       fuerzaBuilder.buildTipo();
-       fuerzaBuilder.buildVida();
-       fuerzaBuilder.buildFaseHabilitada();
-    }
+
 }
