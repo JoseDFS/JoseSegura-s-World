@@ -9,6 +9,7 @@ package Fuerza.Factory;
  *
  * @author Jose Segura <com.segura.jd>
  */
-public interface Fuerza {
-    
+public interface FuerzaG {
+    void Habilitar();
+
 }

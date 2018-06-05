@@ -5,6 +5,10 @@
  */
 package parcial02;
 
+import Fuerza.Factory.FuerzaG;
+import Torre.Factory.TorreFactory;
+import Torre.Factory.TorreProducer;
+
 /**
  *
  * @author Jose Segura <com.segura.jd>
@@ -15,7 +19,13 @@ public class Parcial02 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        TorreFactory factory;
+        String a="Fuerza";
+        
+        factory = TorreProducer.getFactory(a);
+        
+        FuerzaG Mili = factory.getFuerzaG("Transporte Aereo", 0);
+        Mili.Habilitar();
     }
     
 }

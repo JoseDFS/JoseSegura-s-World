@@ -14,14 +14,25 @@ import Fuerza.Builder.DirectorFuerza;
  */
 public class FuerzaFactory implements TorreFactory {
     DirectorFuerza builder = new DirectorFuerza();
+
     @Override
     public Mina getMina(String type) {
-        return null;
+      return null;
     }
 
     @Override
-    public Fuerza getFuerza(String type) {
+    public FuerzaG getFuerzaG(String type,int fase) {
+        switch (type) {
+            case "Milicia":
+                return builder.getFuerza(type, 75, fase);
+            case "Transporte Aereo":
+                return builder.getFuerza(type, 75, fase);
+            case "Transporte Terrestre":
+                return builder.getFuerza(type, 75, fase);
+        }
         return null;
     }
+  
+
     
-}
+   }

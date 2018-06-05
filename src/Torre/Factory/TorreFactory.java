@@ -5,8 +5,8 @@
  */
 package Torre.Factory;
 
-import Fuerza.Factory.Fuerza;
 import Mina.Factory.Mina;
+import Fuerza.Factory.FuerzaG;
 
 /**
  *
@@ -16,5 +16,5 @@ public interface TorreFactory {
 
     Mina getMina(String type);
 
-    Fuerza getFuerza(String type);
+    FuerzaG getFuerzaG(String type,int fase);
 }
