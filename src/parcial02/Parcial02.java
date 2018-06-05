@@ -6,6 +6,8 @@
 package parcial02;
 
 import Lista.Jugador.ListaFuerza;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,19 +18,28 @@ public class Parcial02 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        ListaFuerza Fuerzas = new ListaFuerza();
-        
-        Fuerzas.addFuerza();
-      
-    }
-        /*TorreFactory factory;
+    public static void main(String[] args)  {
+
+        Menu menu = Menu.getInstance();
+
+        menu.mostrar();
+
+    }        /*
+    ListaFuerza Fuerzas = new ListaFuerza();
+        try {   
+            Fuerzas.addFuerza();
+        } catch (Exception ex) {
+            System.err.println("No se pudo construir la torre");
+        }
+        Fuerzas.mostrar();
+    
+    
+    TorreFactory factory;
         String a="Fuerza";
         
         factory = TorreProducer.getFactory(a);
         
         FuerzaG Mili = factory.getFuerzaG("Transporte Aereo", 0);
         Mili.Habilitar();
-    */
-    
-}
+         */
+    }

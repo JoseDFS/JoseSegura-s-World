@@ -26,9 +26,11 @@ public class Fuerza implements FuerzaG{
         this.habilitada = builder.habilitada;
     }
 
-    public boolean isHabilitada() {
-        
-        return habilitada;
+    public String isHabilitada() {
+        if(this.habilitada)
+            return "Construida";
+        else
+            return "En construccion...";
     }
 
     
@@ -46,9 +48,15 @@ public class Fuerza implements FuerzaG{
 
     @Override
     public void Habilitar() {
-        System.out.println("Se habilito" + " " + this.tipo);
         this.habilitada = true;
     }
+
+    @Override
+    public String toString() {
+        return  tipo +"      " + vida +"      " + this.isHabilitada() ;
+    }
+    
+    
 
     public static class FuerzaBuilder {
 

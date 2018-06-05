@@ -23,11 +23,11 @@ public class FuerzaFactory implements TorreFactory {
     @Override
     public FuerzaG getFuerzaG(String type,int fase) {
         switch (type) {
-            case "Milicia":
+            case "Arqueros":
                 return builder.getFuerza(type, 75, fase);
-            case "Transporte Aereo":
+            case "Fenix":
                 return builder.getFuerza(type, 75, fase);
-            case "Transporte Terrestre":
+            case "Quimera":
                 return builder.getFuerza(type, 75, fase);
         }
         return null;

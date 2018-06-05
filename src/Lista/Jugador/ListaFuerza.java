@@ -20,7 +20,7 @@ public class ListaFuerza {
 
     private ArrayList<FuerzaG> fuerzas;
     private TorreFactory factory;
-    private String[] torres = {"Milicia", "Transporte Aereo", "Transporte Terrestre","otroVehiculo"};
+    private String[] torres = {"Arqueros", "Fenix", "Quimera"};
 
     public ListaFuerza() {
         fuerzas = new ArrayList<>();
@@ -51,7 +51,22 @@ public class ListaFuerza {
         }
         FuerzaG fuerza = factory.getFuerzaG(torre, 0);
         fuerzas.add(fuerza);
-        fuerza.Habilitar();
+    }
+    
+     public void mostrar() {
+
+        if (fuerzas.isEmpty()) {
+            System.out.println("No hay torres de fuerzas");
+        } else {
+            System.out.println("-----Torres de Combate-----");
+            System.out.println("  Tipo:     |  Vida:  | Estado:");
+            fuerzas.forEach((e) -> {
+                int cont=1;
+                System.out.println(cont+"."+e.toString());
+                cont++;
+            });
+
+        }
     }
 
 }
