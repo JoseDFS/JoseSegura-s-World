@@ -7,6 +7,7 @@ package parcial02;
 
 import Lista.Jugador.ListaFuerza;
 import World.Players.Jugador;
+import Worlds.Raza.ListaRazas;
 import Worlds.Raza.Raza;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -22,7 +23,8 @@ public class Menu {
     private Jugador Jugador1 = new Jugador();
     private Jugador Jugador2 = new Jugador();
    
-    private Raza Elfos = new Raza("Elfos",)
+    private final ListaRazas Razas = new ListaRazas();
+    
     private int Fase = 1;
 
     private boolean runn = true;
@@ -54,6 +56,10 @@ public class Menu {
 
         }
         jugador.setNick(n);
+        
+        jugador.setRaza(Razas.elegirRaza());
+         System.out.println(jugador.getRaza().getNombre());
+        
     }
 
     public void mostrar() {
