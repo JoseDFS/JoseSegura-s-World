@@ -6,6 +6,7 @@
 package World.Players;
 
 import Lista.Jugador.ListaFuerza;
+import Worlds.Raza.Raza;
 
 /**
  *
@@ -17,6 +18,15 @@ public class Jugador {
     private int r2=0;
     private int r3=0;
     private String nick;
+    private Raza raza;
+
+    public Raza getRaza() {
+        return raza;
+    }
+
+    public void setRaza(Raza raza) {
+        this.raza = raza;
+    }
     
     private ListaFuerza Fuerzas= new ListaFuerza();
 

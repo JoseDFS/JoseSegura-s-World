@@ -7,6 +7,7 @@ package parcial02;
 
 import Lista.Jugador.ListaFuerza;
 import World.Players.Jugador;
+import Worlds.Raza.Raza;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -20,7 +21,8 @@ public class Menu {
 
     private Jugador Jugador1 = new Jugador();
     private Jugador Jugador2 = new Jugador();
-
+   
+    private Raza Elfos = new Raza("Elfos",)
     private int Fase = 1;
 
     private boolean runn = true;
@@ -28,10 +30,8 @@ public class Menu {
     private Scanner choose = new Scanner(System.in);
 
     private Menu() {
-        System.out.println("Ingrese Nick del Jugador1:");
-        Jugador1.setNick(choose.nextLine());
-        System.out.println("Ingrese Nick del Jugador2:");
-        Jugador2.setNick(choose.nextLine());
+        IniJugador(Jugador1, 1);
+        IniJugador(Jugador2, 2);
     }
 
     public static Menu getInstance() {
@@ -41,12 +41,27 @@ public class Menu {
         return menu;
     }
 
+    public void IniJugador(Jugador jugador, int i) {
+        String n = "";
+
+        while (n.isEmpty()) {
+            System.out.println("Ingrese Nick del Jugador" + i + ":");
+            n = choose.nextLine();
+            if (n.isEmpty()) {
+                System.out.println("No ha ingresado un nombre");
+                System.out.println("");
+            }
+
+        }
+        jugador.setNick(n);
+    }
+
     public void mostrar() {
         while (runn) {
             System.out.println("[[[[[[[[[[[[[[[[ Turno Jugador1 ]]]]]]]]]]]]]]]]");
-            Turno("============[ "+Jugador1.getNick()+" ]==========="+ "\n" + Jugador1.toString());
+            Turno("============[ " + Jugador1.getNick() + " ]===========" + "\n" + Jugador1.toString());
             System.out.println("[[[[[[[[[[[[[[[[Turno Jugador2]]]]]]]]]]]]]]]]");
-            Turno("============[ "+Jugador2.getNick()+" ]==========="+ "\n" + Jugador2.toString());
+            Turno("============[ " + Jugador2.getNick() + " ]===========" + "\n" + Jugador2.toString());
             Fase++;
             System.out.println("Fase terminada:" + Fase);
         }
