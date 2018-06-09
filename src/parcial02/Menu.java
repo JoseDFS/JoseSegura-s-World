@@ -20,8 +20,8 @@ public class Menu {
 
     private static Menu menu;
 
-    private Jugador Jugador1 = new Jugador();
-    private Jugador Jugador2 = new Jugador();
+    private Jugador Jugador1;
+    private Jugador Jugador2 ;
    
     private final ListaRazas Razas = new ListaRazas();
     
@@ -32,8 +32,8 @@ public class Menu {
     private Scanner choose = new Scanner(System.in);
 
     private Menu() {
-        IniJugador(Jugador1, 1);
-        IniJugador(Jugador2, 2);
+        IniJugador( 1);
+        IniJugador( 2);
     }
 
     public static Menu getInstance() {
@@ -43,7 +43,7 @@ public class Menu {
         return menu;
     }
 
-    public void IniJugador(Jugador jugador, int i) {
+    public void IniJugador( int i) {
         String n = "";
 
         while (n.isEmpty()) {
@@ -55,10 +55,11 @@ public class Menu {
             }
 
         }
-        jugador.setNick(n);
+        if(i==1)
+            Jugador1= new Jugador(n,Razas.elegirRaza());
+        else
+            Jugador2= new Jugador(n,Razas.elegirRaza());
         
-        jugador.setRaza(Razas.elegirRaza());
-         System.out.println(jugador.getRaza().getNombre());
         
     }
 

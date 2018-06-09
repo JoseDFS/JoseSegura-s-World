@@ -13,12 +13,17 @@ import Worlds.Raza.Raza;
  * @author Jose Segura <com.segura.jd>
  */
 public class Jugador {
+
     private int vida = 100;
-    private int r1=0;
-    private int r2=0;
-    private int r3=0;
+    private int r1;
+    private int r2;
+    private int r3;
     private String nick;
     private Raza raza;
+    private int faseTorres;
+    private int faseSoldados;
+    private int faseV1;
+    private int faseV2;
 
     public Raza getRaza() {
         return raza;
@@ -27,12 +32,20 @@ public class Jugador {
     public void setRaza(Raza raza) {
         this.raza = raza;
     }
-    
-    private ListaFuerza Fuerzas= new ListaFuerza();
 
-    public Jugador() {
-   
+    private ListaFuerza Fuerzas ;
+
+    public Jugador( String nick, Raza raza) {
+        this.nick = nick;
+        this.raza = raza;
+        this.faseTorres = raza.getFaseTorres();
+        this.faseSoldados = raza.getFaseSoldado();
+        this.faseV1 = raza.getFaseV1();
+        this.faseV2 = raza.getFaseV2();
+        this.Fuerzas = new ListaFuerza(this.faseTorres);
     }
+
+
 
     public int getVida() {
         return vida;
@@ -52,9 +65,7 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return  "vida=" + vida + "\n" + "r1=" + r1 + ", r2=" + r2 + ", r3=" + r3;
+        return "vida=" + vida + "\n" + "r1=" + r1 + ", r2=" + r2 + ", r3=" + r3;
     }
-    
-    
-    
+
 }

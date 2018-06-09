@@ -20,11 +20,13 @@ public class ListaFuerza {
 
     private ArrayList<FuerzaG> fuerzas;
     private TorreFactory factory;
-    private String[] torres = {"Arqueros", "Fenix", "Quimera"};
+    private String[] torres;
+    private int faseTorres;
 
-    public ListaFuerza() {
-        fuerzas = new ArrayList<>();
-        factory = TorreProducer.getFactory("Fuerza");
+    public ListaFuerza(int faseTorres) {
+        this.fuerzas = new ArrayList<>();
+        this.factory = TorreProducer.getFactory("Fuerza");
+        this.faseTorres = faseTorres;
     }
 
     public void addFuerza() throws Exception  {
