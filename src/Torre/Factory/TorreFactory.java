@@ -16,5 +16,5 @@ public interface TorreFactory {
 
     Mina getMina(String type);
 
-    FuerzaG getFuerzaG(String type,int fase);
+    FuerzaG getFuerzaG(String type,int fase,int numeroRaza);
 }

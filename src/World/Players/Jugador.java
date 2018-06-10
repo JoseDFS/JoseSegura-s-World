@@ -25,27 +25,35 @@ public class Jugador {
     private int faseV1;
     private int faseV2;
 
+    public ListaFuerza Fuerzas = new ListaFuerza();
+
+    ;
+
     public Raza getRaza() {
         return raza;
+    }
+
+    public int getNumeroRaza() {
+        return this.raza.getNumeroRaza();
     }
 
     public void setRaza(Raza raza) {
         this.raza = raza;
     }
 
-    private ListaFuerza Fuerzas ;
-
-    public Jugador( String nick, Raza raza) {
+    public Jugador(String nick, Raza raza) {
         this.nick = nick;
         this.raza = raza;
         this.faseTorres = raza.getFaseTorres();
         this.faseSoldados = raza.getFaseSoldado();
         this.faseV1 = raza.getFaseV1();
         this.faseV2 = raza.getFaseV2();
-        this.Fuerzas = new ListaFuerza(this.faseTorres);
+
     }
 
-
+    public ListaFuerza getFuerzas() {
+        return Fuerzas;
+    }
 
     public int getVida() {
         return vida;
@@ -65,7 +73,7 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "vida=" + vida + "\n" + "r1=" + r1 + ", r2=" + r2 + ", r3=" + r3;
+        return raza.getNombre()+"\n"+"vida=" + vida + "\n" + "r1=" + r1 + ", r2=" + r2 + ", r3=" + r3;
     }
 
 }

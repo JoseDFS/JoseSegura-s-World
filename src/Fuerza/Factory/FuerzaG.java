@@ -5,12 +5,23 @@
  */
 package Fuerza.Factory;
 
+import Fuerza.Unidad.Unidad;
+import java.util.ArrayList;
+
 /**
  *
  * @author Jose Segura <com.segura.jd>
  */
 public interface FuerzaG {
+
     void Habilitar();
-   
+
+    int getFaseHabilitada();
+
+    void HabilitarU(int fase);
+
+    void Entrenar(int Fase);
+
+    
 
 }

@@ -11,6 +11,8 @@ import Worlds.Raza.ListaRazas;
 import Worlds.Raza.Raza;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,10 +23,10 @@ public class Menu {
     private static Menu menu;
 
     private Jugador Jugador1;
-    private Jugador Jugador2 ;
-   
+    private Jugador Jugador2;
+
     private final ListaRazas Razas = new ListaRazas();
-    
+
     private int Fase = 1;
 
     private boolean runn = true;
@@ -32,8 +34,8 @@ public class Menu {
     private Scanner choose = new Scanner(System.in);
 
     private Menu() {
-        IniJugador( 1);
-        IniJugador( 2);
+        IniJugador(1);
+        IniJugador(2);
     }
 
     public static Menu getInstance() {
@@ -43,7 +45,7 @@ public class Menu {
         return menu;
     }
 
-    public void IniJugador( int i) {
+    public void IniJugador(int i) {
         String n = "";
 
         while (n.isEmpty()) {
@@ -55,20 +57,21 @@ public class Menu {
             }
 
         }
-        if(i==1)
-            Jugador1= new Jugador(n,Razas.elegirRaza());
-        else
-            Jugador2= new Jugador(n,Razas.elegirRaza());
-        
-        
+        if (i == 1) {
+            Jugador1 = new Jugador(n, Razas.elegirRaza());
+        } else {
+            Jugador2 = new Jugador(n, Razas.elegirRaza());
+        }
+
     }
 
-    public void mostrar() {
+    public void mostrar() throws Exception {
         while (runn) {
             System.out.println("[[[[[[[[[[[[[[[[ Turno Jugador1 ]]]]]]]]]]]]]]]]");
-            Turno("============[ " + Jugador1.getNick() + " ]===========" + "\n" + Jugador1.toString());
-            System.out.println("[[[[[[[[[[[[[[[[Turno Jugador2]]]]]]]]]]]]]]]]");
-            Turno("============[ " + Jugador2.getNick() + " ]===========" + "\n" + Jugador2.toString());
+            Turno(Jugador1);
+            System.out.println("[[[[[[[[[[[[[[[[ Turno Jugador2 ]]]]]]]]]]]]]]]]");
+
+            Turno(Jugador2);
             Fase++;
             System.out.println("Fase terminada:" + Fase);
         }
@@ -85,11 +88,20 @@ public class Menu {
         System.out.println("7. Terminar Turno.");
     }
 
-    public void Turno(String jugador) {
+    public void Opc2() {
+        System.out.println("1. Entrenar.");
+        System.out.println("2. Gestionar Unidades.");
+        System.out.println("3. Atras.");
+
+    }
+
+    public void Turno(Jugador jugador) throws Exception {
+        jugador.Fuerzas.Construccion(Fase);
         int optn = -44;
 
         while (optn != 7) {
-            System.out.println(jugador);
+            System.out.println("============[ " + jugador.getNick() + " ]===========" + "\n" + jugador.toString());
+
             Opc1();
             try {
                 System.out.println("--------------------------------------");
@@ -98,7 +110,9 @@ public class Menu {
                 switch (optn) {
                     case 1:
                         System.out.println("Construyendo");
-                        //subMenu1();
+
+                        jugador.Fuerzas.addFuerza(Fase, jugador.getNumeroRaza(), jugador.getRaza().getFaseTorres());
+
                         break;
                     case 2:
                         System.out.println("Minas");
@@ -106,7 +120,8 @@ public class Menu {
                         break;
                     case 3:
                         System.out.println("Fuerzas");
-                        //subMenu3();
+                        jugador.Fuerzas.mostrar();
+                        GestionFuerzas(jugador);
                         break;
 
                     case 4:
@@ -128,6 +143,45 @@ public class Menu {
                         System.out.println("Turno finalizado");
                         System.out.println("");
                         break;
+                    default:
+                        System.out.println("opción no valida");
+                        System.out.println("");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Caractér o caracteres no validos");
+                System.out.println("");
+                choose.nextLine();
+            }
+        }
+
+    }
+
+    public void GestionFuerzas(Jugador jugador) {
+
+        int optn = -44;
+
+        while (optn != 7) {
+            System.out.println("============[ " + jugador.getNick() + " ]===========" + "\n" + jugador.toString());
+            Opc2();
+            try {
+                System.out.println("--------------------------------------");
+                optn = choose.nextInt();
+                System.out.println("");
+                switch (optn) {
+                    case 1:
+                        System.out.println("Entrenando");
+                        jugador.Fuerzas.elegirTorre().Entrenar(Fase);
+
+                        break;
+                    case 2:
+                        System.out.println("Minas");
+                        //subMenu2();
+                        break;
+                    case 3:
+
+                        break;
+
                     default:
                         System.out.println("opción no valida");
                         System.out.println("");

@@ -11,9 +11,9 @@ package Fuerza.Builder;
  */
 public class DirectorFuerza {
 
-    public Fuerza getFuerza(String t, int v, int f) {
+    public Fuerza getFuerza(String t, int v, int f,int vU,int aU,int fU) {
         return new
-            Fuerza.FuerzaBuilder(t,v,f).build();
+            Fuerza.FuerzaBuilder(t,v,f,vU,aU,fU).build();
     }
 
 }

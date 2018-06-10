@@ -20,26 +20,26 @@ public class Parcial02 {
      */
     public static void main(String[] args)  {
 
-        Menu menu = Menu.getInstance();
-
-        menu.mostrar();
-
-    }        /*
-    ListaFuerza Fuerzas = new ListaFuerza();
-        try {   
-            Fuerzas.addFuerza();
+        try {
+            Menu menu = Menu.getInstance();
+            
+            menu.mostrar();
+        } /*
+        ListaFuerza Fuerzas = new ListaFuerza();
+        try {
+        Fuerzas.addFuerza();
         } catch (Exception ex) {
-            System.err.println("No se pudo construir la torre");
+        System.err.println("No se pudo construir la torre");
         }
         Fuerzas.mostrar();
-    
-    
-    TorreFactory factory;
+        TorreFactory factory;
         String a="Fuerza";
-        
         factory = TorreProducer.getFactory(a);
-        
         FuerzaG Mili = factory.getFuerzaG("Transporte Aereo", 0);
         Mili.Habilitar();
-         */
+         */ catch (Exception ex) {
+            Logger.getLogger(Parcial02.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     }

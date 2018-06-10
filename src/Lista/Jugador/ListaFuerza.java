@@ -20,27 +20,39 @@ public class ListaFuerza {
 
     private ArrayList<FuerzaG> fuerzas;
     private TorreFactory factory;
-    private String[] torres;
-    private int faseTorres;
+    private String[] torres1 = {"Arqueros", "Quimera", "Fenix"};
+    private String[] torres2 = {"Guerreros", "Tanque", "Dirigible"};
+    private String[] torres3 = {"Scouts", "LossenTank", "WingForm"};
 
-    public ListaFuerza(int faseTorres) {
+    public ListaFuerza() {
         this.fuerzas = new ArrayList<>();
+
         this.factory = TorreProducer.getFactory("Fuerza");
-        this.faseTorres = faseTorres;
+
     }
 
-    public void addFuerza() throws Exception  {
+    public void addFuerza(int faseIni, int numeroRaza, int faseTorres) throws Exception {
+        String[] torresT = null;
+        if (numeroRaza == 1) {
+            torresT = this.torres1;
+        }
+        if (numeroRaza == 2) {
+            torresT = this.torres2;
+        }
+        if (numeroRaza == 3) {
+            torresT = this.torres3;
+        }
 
         boolean opt = true;
         String torre = "";
         Scanner choose = new Scanner(System.in);
-        System.out.println("Que tipo de torre de Fuerzas de Combate quiere construir? Escriba el numero de la Torre.");
+        System.out.println("Que tipo de Torre de Fuerzas de Combate quiere construir? Escriba el numero de la Torre.");
         while (opt) {
-            for (int i = 0; i < torres.length; i++) {
-                System.out.println((i + 1) + "." + torres[i]);
+            for (int i = 0; i < torresT.length; i++) {
+                System.out.println((i + 1) + "." + torresT[i]);
             }
             try {
-                torre = torres[choose.nextInt() - 1];
+                torre = torresT[Integer.parseInt(choose.nextLine())  - 1];
                 opt = false;
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("No esta ese tipo de Torre");
@@ -49,26 +61,61 @@ public class ListaFuerza {
                 opt = true;
 
             }
-            
+
         }
-        FuerzaG fuerza = factory.getFuerzaG(torre, 0);
+        FuerzaG fuerza = factory.getFuerzaG(torre, (faseIni + faseTorres), numeroRaza);
         fuerzas.add(fuerza);
     }
-    
-     public void mostrar() {
+
+    public void mostrar() {
 
         if (fuerzas.isEmpty()) {
             System.out.println("No hay torres de fuerzas");
         } else {
             System.out.println("-----Torres de Combate-----");
-            System.out.println("  Tipo:     |  Vida:  | Estado:");
+            System.out.println("  Tipo:       |  Vida:  | Estado:");
             fuerzas.forEach((e) -> {
-                int cont=1;
-                System.out.println(cont+"."+e.toString());
+                int cont = 1;
+                System.out.println(cont + "." + e.toString());
                 cont++;
             });
 
         }
+    }
+
+    public FuerzaG elegirTorre() {
+        int numero = -1;
+        boolean opt = true;
+        FuerzaG temp = null;
+        System.out.println("Elija el numero de la torre en la que quiere entrenar");
+        Scanner L = new Scanner(System.in);
+        while (opt) {
+            try {
+                numero =Integer.parseInt(L.nextLine())  - 1;
+                opt = false;
+
+                temp = fuerzas.get(numero);
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.err.println("No esta ese tipo de Torre");
+                System.out.println("");
+                L.nextLine();
+                opt = true;
+            }
+
+        }
+        return temp;
+
+    }
+
+    public void Construccion(int fase) {
+        fuerzas.forEach((e) -> {
+            if (fase == e.getFaseHabilitada()) {
+                e.Habilitar();
+            }
+            e.HabilitarU(fase);
+        });
+
     }
 
 }
