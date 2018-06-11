@@ -52,7 +52,7 @@ public class ListaFuerza {
                 System.out.println((i + 1) + "." + torresT[i]);
             }
             try {
-                torre = torresT[Integer.parseInt(choose.nextLine())  - 1];
+                torre = torresT[Integer.parseInt(choose.nextLine()) - 1];
                 opt = false;
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("No esta ese tipo de Torre");
@@ -68,16 +68,16 @@ public class ListaFuerza {
     }
 
     public void mostrar() {
-
+        
         if (fuerzas.isEmpty()) {
             System.out.println("No hay torres de fuerzas");
         } else {
             System.out.println("-----Torres de Combate-----");
-            System.out.println("  Tipo:       |  Vida:  | Estado:");
+            System.out.println("  Tipo:         |  Vida:  | Estado:");
             fuerzas.forEach((e) -> {
-                int cont = 1;
-                System.out.println(cont + "." + e.toString());
-                cont++;
+
+                System.out.println(fuerzas.indexOf(e)+1+"." + e.toString());
+               
             });
 
         }
@@ -87,14 +87,15 @@ public class ListaFuerza {
         int numero = -1;
         boolean opt = true;
         FuerzaG temp = null;
-        System.out.println("Elija el numero de la torre en la que quiere entrenar");
+        System.out.println("Elija el numero de la torre:");
         Scanner L = new Scanner(System.in);
         while (opt) {
             try {
-                numero =Integer.parseInt(L.nextLine())  - 1;
+                numero = Integer.parseInt(L.nextLine()) - 1;
                 opt = false;
 
                 temp = fuerzas.get(numero);
+                System.out.println("Obtuve temp");
 
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("No esta ese tipo de Torre");
@@ -104,6 +105,7 @@ public class ListaFuerza {
             }
 
         }
+        System.out.println("Retorne fruerzaG");
         return temp;
 
     }

@@ -5,6 +5,7 @@
  */
 package parcial02;
 
+import Fuerza.Factory.FuerzaG;
 import Lista.Jugador.ListaFuerza;
 import World.Players.Jugador;
 import Worlds.Raza.ListaRazas;
@@ -120,7 +121,7 @@ public class Menu {
                         break;
                     case 3:
                         System.out.println("Fuerzas");
-                        jugador.Fuerzas.mostrar();
+
                         GestionFuerzas(jugador);
                         break;
 
@@ -158,10 +159,11 @@ public class Menu {
     }
 
     public void GestionFuerzas(Jugador jugador) {
-
+        FuerzaG temp = null;
         int optn = -44;
+        jugador.Fuerzas.mostrar();
+        while (optn != 3) {
 
-        while (optn != 7) {
             System.out.println("============[ " + jugador.getNick() + " ]===========" + "\n" + jugador.toString());
             Opc2();
             try {
@@ -171,12 +173,20 @@ public class Menu {
                 switch (optn) {
                     case 1:
                         System.out.println("Entrenando");
-                        jugador.Fuerzas.elegirTorre().Entrenar(Fase);
+                        jugador.Fuerzas.mostrar();
+                        temp = jugador.Fuerzas.elegirTorre();
+                        if (temp.getHabilitada()) {
+                            temp.Entrenar(Fase);
+                        }
+                        else
+                            System.out.println("Nose se peude entrenar, torre en construccion...");
 
                         break;
                     case 2:
-                        System.out.println("Minas");
-                        //subMenu2();
+                        System.out.println("Unidades");
+                        jugador.Fuerzas.mostrar();
+                        temp = jugador.Fuerzas.elegirTorre();
+                        temp.mostrarUnidades();
                         break;
                     case 3:
 

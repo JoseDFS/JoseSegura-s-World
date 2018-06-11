@@ -35,6 +35,7 @@ public class Fuerza implements FuerzaG {
         this.ataqueUnidad = builder.ataqueUnidad;
         this.vidaUnidad = builder.vidaUnidad;
         this.faseUnidad = builder.faseUnidad;
+        this.unidades = new ArrayList<>();
     }
 
     public String isHabilitada() {
@@ -48,23 +49,29 @@ public class Fuerza implements FuerzaG {
     @Override
     public void Entrenar(int fase) {
 
-        Unidad unidad = new Unidad(this.tipo + (unidades.size() + 1), "Entrenando", this.vidaUnidad, this.ataqueUnidad, this.faseUnidad + fase);
+        Unidad unidad = new Unidad(this.tipo + "_" + (unidades.size() + 1), "Entrenando", this.vidaUnidad, this.ataqueUnidad, this.faseUnidad + fase);
         unidades.add(unidad);
     }
 
-    public void mostrarUnidad() {
+    @Override
+    public void mostrarUnidades() {
         if (unidades.isEmpty()) {
             System.out.println("No hay torres de fuerzas");
         } else {
             System.out.println("-----Unidades de Combate-----");
-            System.out.println("  Tipo:       |  Vida:  |   Ataque:  | Estado:");
+            System.out.println("  Tipo:      |  Vida:  |   Ataque:  | Estado:");
             unidades.forEach((e) -> {
-                int cont = 1;
-                System.out.println(cont + "." + e.toString());
-                cont++;
+
+                System.out.println(unidades.indexOf(e) + 1 + "." + e.toString());
+
             });
 
         }
+    }
+
+    @Override
+    public boolean getHabilitada() {
+        return this.habilitada;
     }
 
     public String getTipo() {
@@ -79,8 +86,6 @@ public class Fuerza implements FuerzaG {
         return unidades;
     }
 
-    
-    
     @Override
     public int getFaseHabilitada() {
         return FaseHabilitada;
@@ -90,15 +95,16 @@ public class Fuerza implements FuerzaG {
     public void Habilitar() {
         this.habilitada = true;
     }
-    
+
     @Override
     public void HabilitarU(int fase) {
-         if (unidades.isEmpty()) {
+        if (unidades.isEmpty()) {
             System.out.println("No hay unidades");
         } else {
             unidades.forEach((e) -> {
-                if(fase == e.getFaseHabilitada())
+                if (fase == e.getFaseHabilitada()) {
                     e.Habilitar();
+                }
             });
 
         }

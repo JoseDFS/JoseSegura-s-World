@@ -28,7 +28,7 @@ public class Unidad {
 
     public String isHabilitada() {
         if (this.habilitada) {
-            return "Habilita";
+            return "Esperando ordenes";
         } else {
             return "Entrenando";
         }
@@ -45,9 +45,9 @@ public class Unidad {
     @Override
     public String toString() {
         if (this.estado == "Atacando" || this.estado == "Defendiendo") {
-            return nombre + "     " + vida + "     " + ataque + "       " + this.estado;
+            return nombre + "     " + vida + "        " + ataque + "       " + this.estado;
         } else {
-            return nombre + "     " + vida + "     " + ataque + "       " + this.isHabilitada();
+            return nombre + "     " + vida + "        " + ataque + "       " + this.isHabilitada();
         }
 
     }

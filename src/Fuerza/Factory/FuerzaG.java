@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public interface FuerzaG {
 
     void Habilitar();
+    
+    boolean getHabilitada();
 
     int getFaseHabilitada();
 
@@ -22,6 +24,6 @@ public interface FuerzaG {
 
     void Entrenar(int Fase);
 
-    
+    void mostrarUnidades();
 
 }
