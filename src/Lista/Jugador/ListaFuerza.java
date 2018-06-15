@@ -24,9 +24,7 @@ public class ListaFuerza {
     private String[] torres2 = {"Guerreros", "Tanque", "Dirigible"};
     private String[] torres3 = {"Scouts", "LossenTank", "WingForm"};
 
-    int[] costo1;
-    int[] costo2;
-    int[] costo3;
+    int costo1, costo2, costo3, costo4, costo5, costo6, costo7, costo8, costo9;
 
     public ListaFuerza() {
         this.fuerzas = new ArrayList<>();
@@ -38,113 +36,88 @@ public class ListaFuerza {
     public ArrayList<FuerzaG> getFuerzas() {
         return fuerzas;
     }
-    
-    
 
     public void addFuerza(int faseIni, int numeroRaza, int faseTorres, Jugador jugador) throws Exception {
+     
         String[] torresT = null;
+        FuerzaG fuerza = null;
         if (numeroRaza == 1) {
             torresT = this.torres1;
 
-            costo1[0] = 1000;
-            costo1[1] = 750;
-            costo1[2] = 0;
+            costo1 = 2000;
+            costo2 = 1000;
+            costo3 = 300;
 
-            costo2[0] = 1000;
-            costo2[1] = 1000;
-            costo2[2] = 750;
+            costo4 = 1500;
+            costo5 = 1000;
+            costo6 = 200;
 
-            costo3[0] = 2000;
-            costo3[1] = 1000;
-            costo3[2] = 1000;
+            costo7 = 1500;
+            costo8 = 1000;
+            costo9 = 450;
         }
         if (numeroRaza == 2) {
             torresT = this.torres2;
 
-            costo1[0] = 750;
-            costo1[1] = 500;
-            costo1[2] = 0;
+            costo1 = 1500;
+            costo2 = 750;
+            costo3 = 300;
 
-            costo2[0] = 1000;
-            costo2[1] = 500;
-            costo2[2] = 300;
+            costo4 = 1300;
+            costo5 = 1000;
+            costo6 = 200;
 
-            costo3[0] = 2000;
-            costo3[1] = 1500;
-            costo3[2] = 1000;
+            costo7 = 1500;
+            costo8 = 1000;
+            costo9 = 450;
         }
         if (numeroRaza == 3) {
             torresT = this.torres3;
 
-            costo1[0] = 1000;
-            costo1[1] = 750;
-            costo1[2] = 0;
+            costo1 = 2000;
+            costo2 = 750;
+            costo3 = 150;
 
-            costo2[0] = 1000;
-            costo2[1] = 1000;
-            costo2[2] = 750;
+            costo4 = 1350;
+            costo5 = 1000;
+            costo6 = 450;
 
-            costo3[0] = 2000;
-            costo3[1] = 1000;
-            costo3[2] = 1000;
+            costo7 = 1000;
+            costo8 = 2350;
+            costo9 = 600;
         }
         boolean construir = false;
         boolean opt = true;
         String torre = "";
         Scanner choose = new Scanner(System.in);
-        System.out.println("Que tipo de Torre de Fuerzas de Combate quiere construir? Escriba el numero de la Torre.");
+        System.out.println("Que tipo de Torre de fuerzas de combate quiere construir? Escriba el numero de la Torre.");
         while (opt) {
             for (int i = 0; i < torresT.length; i++) {
                 System.out.println((i + 1) + "." + torresT[i]);
             }
             try {
                 int po = Integer.parseInt(choose.nextLine()) - 1;
-                if ((po == 1) && (jugador.getR1() >= costo1[0]) && (jugador.getR2() >= costo1[1]) && (jugador.getR3() >= costo1[2])) {
+                if ((po == 1) && (jugador.getR1() >= costo1) && (jugador.getR2() >= costo2) && (jugador.getR3() >= costo3)) {
                     torre = torresT[po];
                     construir = true;
                     opt = false;
                 }
-                if ((po == 2) && (jugador.getR1() >= costo2[0]) && (jugador.getR2() >= costo2[1]) && (jugador.getR3() >= costo2[2])) {
+                if ((po == 2) && (jugador.getR1() >= costo4) && (jugador.getR2() >= costo5) && (jugador.getR3() >= costo6)) {
                     torre = torresT[po];
                     construir = true;
                     opt = false;
                 }
-                if ((po == 3) && (jugador.getR1() >= costo3[0]) && (jugador.getR2() >= costo3[1]) && (jugador.getR3() >= costo3[2])) {
+                if ((po == 3) && (jugador.getR1() >= costo7) && (jugador.getR2() >= costo8) && (jugador.getR3() >= costo9)) {
                     torre = torresT[po];
                     construir = true;
                     opt = false;
-                } else {
-                    System.out.println("No tiene los suficientes recursos" + "\n" + "1.Atras 2.Elegir otra Torre");
-                    int opc = -44;
-
-                    try {
-
-                        opc = choose.nextInt();
-                        System.out.println("");
-                        switch (opc) {
-                            case 1:
-                                opt = false;
-                                break;
-
-                            case 2:
-                                opt = true;
-                                System.out.println("");
-                                break;
-
-                            default:
-                                System.out.println("opción no valida");
-                                System.out.println("");
-                                break;
-                        }
-                    } catch (InputMismatchException e) {
-                        System.err.println("Caractér o caracteres no validos");
-                        System.out.println("");
-                        choose.nextLine();
-
-                    }
-
                 }
-
+                 else{
+                 System.out.println("No tiene los suficientes recursos" );
+                 opt = false;
+                }
+                
+              
             } catch (IndexOutOfBoundsException e) {
                 System.err.println("No esta ese tipo de Torre");
                 System.out.println("");
@@ -155,7 +128,7 @@ public class ListaFuerza {
 
         }
         if (construir) {
-            FuerzaG fuerza = factory.getFuerzaG(torre, (faseIni + faseTorres), numeroRaza);
+            fuerza = factory.getFuerzaG(torre, (faseIni + faseTorres), numeroRaza);
             fuerzas.add(fuerza);
         }
     }

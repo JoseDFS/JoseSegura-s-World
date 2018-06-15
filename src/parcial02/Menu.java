@@ -127,6 +127,14 @@ public class Menu {
     public void Turno(Jugador jugadorA, Jugador jugadorB) throws Exception {
         jugadorA.Fuerzas.Construccion(Fase);
         jugadorA.Minas.Construccion(Fase);
+        jugadorA.setR1(jugadorA.getR1()+300);
+        jugadorA.setR2(jugadorA.getR1()+400);
+       
+        
+        
+        FuerzaG temp = null;
+        MinaG temp2 = null;
+
         int optn = -44;
 
         while (optn != 5) {
@@ -142,9 +150,10 @@ public class Menu {
                         System.out.println("Construyendo");
                         System.out.println("1.Torres de Combate.");
                         System.out.println("2.Minas.");
-                        System.out.println("2.Atras.");
+                        System.out.println("3.Atras.");
                         int opc = -44;
-                        while (opc != 3) {
+
+                        try {
                             System.out.println("--------------------------------------");
                             opc = choose.nextInt();
                             System.out.println("");
@@ -153,19 +162,30 @@ public class Menu {
                                     System.out.println("----------Torres de combate--------------");
 
                                     jugadorA.Fuerzas.addFuerza(Fase, jugadorA.getNumeroRaza(), jugadorA.getRaza().getFaseTorres(), jugadorA);
+                                    System.out.println("se construyo torre");
                                     break;
 
                                 case 2:
                                     System.out.println("----------Minas--------------");
 
-                                    jugadorA.Minas.addMina(Fase, jugadorA.getNumeroRaza(), jugadorA.getRaza().getFaseTorres(), jugadorA);
+                                     jugadorA.Minas.addMina(Fase, jugadorA.getNumeroRaza(), jugadorA.getRaza().getFaseTorres(), jugadorA);
+                                    break;
+                                case 3:
+                                    break;
+                                default:
+                                    System.out.println("opción no valida");
+                                    System.out.println("");
                                     break;
 
                             }
-
+                        } catch (InputMismatchException e) {
+                            System.err.println("Caractér o caracteres no validos");
+                            System.out.println("");
+                            choose.nextLine();
                         }
 
                         break;
+
                     case 2:
                         System.out.println("Minas");
                         GestionMinas(jugadorA);
