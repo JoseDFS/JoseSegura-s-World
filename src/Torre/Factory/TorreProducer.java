@@ -1,11 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Esta es la clase que se encarga de crear las factorias concretas ya sean de tipo minaG o fuerzaG.
  */
 package Torre.Factory;
 
 import Fuerza.Factory.FuerzaFactory;
+import Mina.Factory.MinaFactory;
 
 /**
  *
@@ -17,7 +16,7 @@ public class TorreProducer {
             case "Fuerza":
                 return  new FuerzaFactory();
             case "Mina":
-                return null;
+                return new MinaFactory();
         }
         return null;
     }

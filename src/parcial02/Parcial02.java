@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Esta clase es el main del programa que se encargara de tener la instancia de un objeto tipo menu.
  */
 package parcial02;
 
@@ -24,20 +22,7 @@ public class Parcial02 {
             Menu menu = Menu.getInstance();
             
             menu.mostrar();
-        } /*
-        ListaFuerza Fuerzas = new ListaFuerza();
-        try {
-        Fuerzas.addFuerza();
         } catch (Exception ex) {
-        System.err.println("No se pudo construir la torre");
-        }
-        Fuerzas.mostrar();
-        TorreFactory factory;
-        String a="Fuerza";
-        factory = TorreProducer.getFactory(a);
-        FuerzaG Mili = factory.getFuerzaG("Transporte Aereo", 0);
-        Mili.Habilitar();
-         */ catch (Exception ex) {
             Logger.getLogger(Parcial02.class.getName()).log(Level.SEVERE, null, ex);
         }
 

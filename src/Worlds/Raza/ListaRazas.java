@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Esta clase es la que administrara las razas disponibles en el programa. Esta preparada para agregar una nueva raza con los parametros requeridos.
  */
 package Worlds.Raza;
 
@@ -23,13 +21,13 @@ public class ListaRazas {
     public ListaRazas() {
         razas = new ArrayList<>();
 
-        Raza Elfos = new Raza("Elfos", "", 3, 2, 2, 3, 1);
+        Raza Elfos = new Raza("Elfos", "", 3, 2, 2, 3, 1,2);
         razas.add(Elfos);
 
-        Raza Enanos = new Raza("Enanos", "", 2, 1, 2, 2, 2);
+        Raza Enanos = new Raza("Enanos", "", 2, 1, 2, 2, 2,2);
         razas.add(Enanos);
 
-        Raza ExMachina = new Raza("Ex-Machina", "", 1, 2, 2, 3, 3);
+        Raza ExMachina = new Raza("Ex-Machina", "", 1, 2, 2, 3, 3,1);
         razas.add(ExMachina);
 
     }

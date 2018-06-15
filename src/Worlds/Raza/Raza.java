@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Esta clase es la que representa el objeto raza que es la que servira para setear los parametros requeridos por el objeto jugador segun los atributos que esta clase tenga.
  */
 package Worlds.Raza;
 
@@ -18,6 +16,13 @@ public class Raza {
     private final int faseV1;
     private final int faseV2;
     private final int numeroRaza;
+    private final int faseMinas;
+
+    public int getFaseMinas() {
+        return faseMinas;
+    }
+    
+    
 
     public String getDescripcion() {
         return descripcion;
@@ -43,7 +48,7 @@ public class Raza {
         return numeroRaza;
     }
 
-    public Raza(String nombre, String descripcion, int faseTorres, int faseSoldado, int faseV1, int faseV2, int numeroRaza) {
+    public Raza(String nombre, String descripcion, int faseTorres, int faseSoldado, int faseV1, int faseV2, int numeroRaza,int faseMinas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.faseTorres = faseTorres;
@@ -51,6 +56,7 @@ public class Raza {
         this.faseV1 = faseV1;
         this.faseV2 = faseV2;
         this.numeroRaza = numeroRaza;
+        this.faseMinas = faseMinas;
     }
 
     public String getNombre() {

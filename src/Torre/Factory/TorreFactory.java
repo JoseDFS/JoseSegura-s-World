@@ -1,12 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Esta es la facroria abstracta que se encarga de obtener un objeto ya sea de tipo minaG o fuerzaG segun los parametros dados.
  */
 package Torre.Factory;
 
-import Mina.Factory.Mina;
 import Fuerza.Factory.FuerzaG;
+import Mina.Factory.MinaG;
 
 /**
  *
@@ -14,7 +12,7 @@ import Fuerza.Factory.FuerzaG;
  */
 public interface TorreFactory {
 
-    Mina getMina(String type);
+    MinaG getMinaG(String type,int fase, int numeroRaza);
 
     FuerzaG getFuerzaG(String type,int fase,int numeroRaza);
 }

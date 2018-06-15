@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Esta clase es la que instancia el objeto fuerza, retornara y le dara dicha instancia a la factory
  */
 package Fuerza.Builder;
 
@@ -11,9 +9,9 @@ package Fuerza.Builder;
  */
 public class DirectorFuerza {
 
-    public Fuerza getFuerza(String t, int v, int f,int vU,int aU,int fU) {
+    public Fuerza getFuerza(String t, int v, int f,int vU,int aU,int fU,int tU,int nF) {
         return new
-            Fuerza.FuerzaBuilder(t,v,f,vU,aU,fU).build();
+            Fuerza.FuerzaBuilder(t,v,f,vU,aU,fU,tU,nF).build();
     }
 
 }
